@@ -1,0 +1,221 @@
+Список таблиц в базе данных:
+Таблица: cities
+  Колонка: id - int
+  Колонка: city_key - varchar(100)
+  Колонка: timezone - varchar(50)
+  Колонка: cyty_name_for_event_search - text
+
+Таблица: event_categories
+  Колонка: id - int
+  Колонка: category_key - varchar(50)
+  Колонка: sort_order - int
+  Колонка: is_active - tinyint(1)
+
+Таблица: events
+  Колонка: id - int
+  Колонка: event_id - varchar(255)
+  Колонка: name - varchar(255)
+  Колонка: description - text
+  Колонка: image_url - varchar(1024)
+  Колонка: start_date - datetime
+  Колонка: end_date - datetime
+  Колонка: venue_name - varchar(255)
+  Колонка: venue_address - text
+  Колонка: city_id - int
+  Колонка: price_min - decimal(10,2)
+  Колонка: price_max - decimal(10,2)
+  Колонка: ticket_url - varchar(1024)
+  Колонка: genre - varchar(100)
+  Колонка: event_type - varchar(100)
+  Колонка: sale_status - varchar(50)
+  Колонка: created_at - timestamp
+  Колонка: updated_at - timestamp
+
+Таблица: selected_files
+  Колонка: id - int
+  Колонка: filename - varchar(255)
+  Колонка: is_selected - tinyint(1)
+  Колонка: created_at - timestamp
+  Колонка: updated_at - timestamp
+
+Таблица: telegram_users
+  Колонка: id - bigint
+  Колонка: username - varchar(255)
+  Колонка: first_name - varchar(255)
+  Колонка: last_name - varchar(255)
+  Колонка: is_bot - tinyint(1)
+  Колонка: created_at - timestamp
+  Колонка: last_interaction - timestamp
+  Колонка: language - varchar(10)
+  Колонка: onboarding_completed - tinyint(1)
+  Колонка: selected_city - varchar(100)
+  Колонка: selected_categories - text
+  Колонка: gender - varchar(10)
+  Колонка: age_group - varchar(20)
+  Колонка: language_code - text
+  Колонка: last_ai_context_update - timestamp
+  Колонка: ai_context - mediumtext
+  Колонка: selected_date_range - json
+
+
+Связи между таблицами (Внешние ключи):
+Таблица: cities
+
+Таблица: event_categories
+
+Таблица: events
+  Колонка: city_id -> cities(id)
+  Колонка: city_id -> cities(id)
+
+Таблица: selected_files
+
+Таблица: telegram_users
+
+
+Примеры данных из таблиц:
+Таблица: cities (Примеры записей)
+{
+    "id": 1,
+    "city_key": "san_francisco",
+    "timezone": "America\/Los_Angeles",
+    "cyty_name_for_event_search": "san francisco"
+}
+{
+    "id": 2,
+    "city_key": "new_york",
+    "timezone": "",
+    "cyty_name_for_event_search": "new york"
+}
+{
+    "id": 3,
+    "city_key": "seattle",
+    "timezone": "",
+    "cyty_name_for_event_search": "seattle"
+}
+
+Таблица: event_categories (Примеры записей)
+{
+    "id": 16,
+    "category_key": "cinema_theater",
+    "sort_order": 10,
+    "is_active": 1
+}
+{
+    "id": 17,
+    "category_key": "concerts_music",
+    "sort_order": 20,
+    "is_active": 1
+}
+{
+    "id": 18,
+    "category_key": "food_drinks",
+    "sort_order": 30,
+    "is_active": 1
+}
+
+Таблица: events (Примеры записей)
+{
+    "id": 192,
+    "event_id": "G5vYZb8wkeeFk",
+    "name": "Golden State Warriors vs. New Orleans Pelicans",
+    "description": null,
+    "image_url": "https:\/\/s1.ticketm.net\/dam\/a\/c26\/f3bc3686-a6c2-...",
+    "start_date": "2024-10-31 02:00:00",
+    "end_date": "2024-10-31 02:00:00",
+    "venue_name": "Chase Center",
+    "venue_address": "300 16th Street, San Francisco, CA",
+    "city_id": 1,
+    "price_min": "65.00",
+    "price_max": "1000.00",
+    "ticket_url": "https:\/\/www.ticketmaster.com\/golden-state-warri...",
+    "genre": "Basketball",
+    "event_type": "Sports",
+    "sale_status": "onsale",
+    "created_at": "2024-10-30 23:31:36",
+    "updated_at": "2024-10-30 23:31:36"
+}
+{
+    "id": 193,
+    "event_id": "Z7r9jZ1A7G7Zg",
+    "name": "Dayseeker w\/ Alpha Wolf",
+    "description": null,
+    "image_url": "https:\/\/s1.ticketm.net\/dam\/a\/ba9\/2643170a-f319-...",
+    "start_date": "2024-10-31 02:00:00",
+    "end_date": "2024-10-31 02:00:00",
+    "venue_name": "Warfield",
+    "venue_address": "982 Market St., San Francisco, CA",
+    "city_id": 1,
+    "price_min": null,
+    "price_max": null,
+    "ticket_url": "https:\/\/www.ticketmaster.com\/event\/Z7r9jZ1A7G7Zg",
+    "genre": "Other",
+    "event_type": "Music",
+    "sale_status": "onsale",
+    "created_at": "2024-10-30 23:31:36",
+    "updated_at": "2024-10-30 23:31:36"
+}
+{
+    "id": 194,
+    "event_id": "Z7r9jZ1A7uyOy",
+    "name": "Seattle Symphony w\/ Harry Potter and the Deathl...",
+    "description": null,
+    "image_url": "https:\/\/s1.ticketm.net\/dam\/c\/f7b\/ef64d601-8740-...",
+    "start_date": "2024-11-03 03:00:00",
+    "end_date": "2024-11-03 03:00:00",
+    "venue_name": "Taper Auditorium",
+    "venue_address": "200 University St, Seattle, WA",
+    "city_id": 3,
+    "price_min": null,
+    "price_max": null,
+    "ticket_url": "https:\/\/www.ticketmaster.com\/event\/Z7r9jZ1A7uYoY",
+    "genre": "Classical",
+    "event_type": "Music",
+    "sale_status": "onsale",
+    "created_at": "2024-10-30 23:31:36",
+    "updated_at": "2024-10-30 23:48:36"
+}
+
+Таблица: selected_files (Примеры записей)
+{
+    "id": 85,
+    "filename": "context2.php",
+    "is_selected": 1,
+    "created_at": "2024-10-31 17:43:12",
+    "updated_at": "2024-10-31 19:28:50"
+}
+{
+    "id": 86,
+    "filename": "db_connection.php",
+    "is_selected": 1,
+    "created_at": "2024-10-31 17:43:12",
+    "updated_at": "2024-10-31 19:28:50"
+}
+{
+    "id": 87,
+    "filename": "event.php",
+    "is_selected": 1,
+    "created_at": "2024-10-31 17:43:12",
+    "updated_at": "2024-10-31 19:28:50"
+}
+
+Таблица: telegram_users (Примеры записей)
+{
+    "id": 266835227,
+    "username": "dontsurrender",
+    "first_name": "Sergei",
+    "last_name": "Terekhov",
+    "is_bot": 0,
+    "created_at": "2024-10-30 22:21:36",
+    "last_interaction": "2024-10-31 19:23:52",
+    "language": "_ru",
+    "onboarding_completed": 1,
+    "selected_city": "_1",
+    "selected_categories": "[\"18\"]",
+    "gender": "_male",
+    "age_group": "_25_34",
+    "language_code": "en",
+    "last_ai_context_update": "2024-10-31 19:23:25",
+    "ai_context": "{\"user\":{\"language\":\"ru\",\"gender\":\"_male\",\"age_...",
+    "selected_date_range": null
+}
+
